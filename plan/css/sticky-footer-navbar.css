@@ -1,0 +1,144 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */\
+  margin-top:50px;
+  margin-bottom: 80px;
+  background-color:transparent;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top:100px;
+  border-top:1px solid #eee;
+  text-align:center;
+  /* Set the fixed height of the footer here */
+  height: 80px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #fff;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 50px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.container{
+	
+}
+code {
+  font-size: 80%;
+}
+
+/*-----------*/
+header{
+	padding-top:180px;
+	padding-left:65px;
+	background: url(heart.jpg) no-repeat;
+   -moz-background-size:100% 100%;        /*for Firefox*/
+	-webkit-background-size:100% 100%;        /*for Google Chrome、Safari*/
+	-o-background-size:100% 100%;        /*for Opera*/
+	background-size:100% 100%;        /*for IE*/
+	height:500px;
+}
+
+#content{
+	font-size:12pt;
+	color:#555;
+	font-family:SimSun;
+	border-bottom:1px dashed #ddd;
+	padding-bottom:100px;
+	margin-bottom:100px;
+}
+
+#start{
+	margin-top:100px;
+	height:480px;
+	padding:20px 20px 20px 20px;
+    border-radius:8px;
+	width:380px;
+	text-align:left;
+	background-color:#f9f9f9;
+	margin:0 auto;
+}
+
+#carouselExampleSlidesOnly{
+	border:8px #fff solid;
+}
+/*w*/
+h1{
+	font-size: 48pt;
+    font-weight: bold;
+	font-family:SimSun;
+	color:#fff;
+	text-shadow:2px 2px 2px #555;
+	display:none;
+}
+
+p{
+	line-height:2.2em;
+}
+
+h4{
+	width:280px;
+	font-weight:bold;
+	border-bottom:1px solid #eee;
+	padding-bottom:5px;
+	margin-bottom:20px;
+}
+
+#reply{
+	padding-top:30px;
+}
+#step{
+	font:16pt SimSun;
+	padding:15px;
+	color:#555;
+	width:300px;
+	text-align:left;
+	border-bottom:1px solid #eee;
+}
+
+#step1{
+	font:16pt SimSun;
+	margin-top:30px;
+	padding:15px;
+	color:#ff7887;
+	font-weight:bold;
+	width:300px;
+	border-bottom:1px solid #eee;
+}
+
+#but{
+	margin-bottom:10px;
+}
+.count{
+	font-size: 38pt;
+    font-weight: bold;
+	font-family:SimSun;
+	color:#fff;
+	text-shadow:2px 2px 2px #555;
+	margin-top:15px;
+}
+
+#number{
+	font-size: 46pt;
+    font-weight: bold;
+	font-family:SimSun;
+	color:#ff7887;
+	text-shadow:2px 2px 2px #555;
+}

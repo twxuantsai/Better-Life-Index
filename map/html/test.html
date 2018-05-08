@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="initial-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta charset="utf-8"/>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        top:10px;
+        height: 100%;
+        /*width: 55%;
+        float:left;
+        margin-top: 30px;*/
+      }
+      #right-panel {
+      font-family: 'Roboto','sans-serif';
+      line-height: 30px;
+      padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        right: 10px;
+        top: 60%;
+        margin-top: -195px;
+        height: 440px;
+        width: 300px;
+        padding: 5px;
+        z-index: 5;
+        border: 1px solid #999;
+        background: #fff;
+      }
+      h2 {
+        font-size: 22px;
+        margin: 0 0 5px 0;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        height: 400px;
+        width: 300px;
+        overflow-y: scroll;
+      }
+      li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      li:nth-child(odd) {
+        background-color: #fcfcfc;
+      }
+      #more {
+        width: 100%;
+        margin: 5px 0 0 0;
+      }
+      #right-panel li:hover{background-color: #dfeeff;}
+    </style>
+    <title>
+        Place search pagination
+    </title>
+    <script>
+      var map;
+      var markers = [];
+      var markers1 = [];
+      var polys = [];
+      var placesList;
+      var poly;
+      var marker1;
+      var paginationData = [];
+
+      function initMap() {
+        var pyrmont = {lat: 25.176912, lng: 121.435209};
+        var nowPlace = null;
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 17
+        });
+
+        var service = new google.maps.places.PlacesService(map);
+
+        map.addListener('click', function(e) {
+          nowPlace = e.latLng;
+          deleteMarkers();
+          placeMarkerAndPanTo(nowPlace, map);
+        });
+
+        $('#select').change(function(){
+          id= $(this).find(':selected').data('id') ;
+          //或是以下方式也可以
+          //id= $(this).find(':selected').attr('data-id');
+          //alert( id );
+          //console.log(id);
+          service.nearbySearch({
+            location: nowPlace,
+            radius: 500,
+            types: [id],
+            //rankby: 'distance'
+          }, processResults);
+        });
+
+        function placeMarkerAndPanTo(latLng, map) {
+          marker1 = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+          // map.panTo(latLng);
+          markers1.push(marker1);
+          // console.log(markers)
+          // console.log(markers1)
+        }
+      }
+
+        function processResults(results, status, pagination) {
+          if (status !== google.maps.places.PlacesServiceStatus.OK) {
+            return;
+          } else {
+            paginationData = paginationData.concat(results);
+            if (pagination.hasNextPage) {
+              pagination.nextPage();
+            } else {
+              createMarkers(paginationData);
+              console.log('final page')
+            }
+          }
+        }
+        
+
+        function createMarkers(places) {
+          var bounds = new google.maps.LatLngBounds();
+          //var placesList = document.getElementById('places');
+          placesList = document.getElementById('places');
+          for (var i = 0, place; place = places[i]; i++) {
+            var image = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+            
+            /*var marker1 = new google.maps.Marker({
+              map: map,
+              position: {lat: 25.176912, lng: 121.435209}
+            });*/
+
+            var marker = new google.maps.Marker({
+              map: map,
+              icon: image,
+              title: place.name,
+              position: place.geometry.location
+            });
+            markers.push(marker);
+            poly = new google.maps.Polyline({
+              strokeColor: '#FF0000',
+              strokeOpacity: 1.0,
+              strokeWeight: 2,
+              map: map,
+            });
+            var path = [marker1.getPosition(), marker.getPosition()];
+            poly.setPath(path);
+            polys.push(poly);
+
+            //console.log(place.geometry.location.lat());
+            //console.log(place.geometry.location);
+            
+            placesList.innerHTML += '<li>' + '(' + (i+1) +') '+ place.name + '</li>'; //底下的文字
+            bounds.extend(place.geometry.location);
+          }
+          map.fitBounds(bounds);
+        }
+        function setMapOnAll(map) {
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+          }
+        }
+        function clearMarkers() {
+          setMapOnAll(null);
+        }
+
+        function setMapOnAll1(map) {
+          for (var j = 0; j < polys.length; j++) {
+            polys[j].setMap(map);
+          }
+        }
+        function clearMarkers1() {
+          setMapOnAll1(null);
+        }
+        function setMapOnAll2(map) {
+          for (var k = 0; k < markers1.length; k++) {
+            markers1[k].setMap(map);
+          }
+        }
+        function clearMarkers2() {
+          setMapOnAll2(null);
+        }
+        function deleteMarkers() {
+          clearMarkers();
+          clearMarkers1();
+          markers = [];
+          clearMarkers2();
+          markers1= [];
+          polys=[];
+          paginationData = [];
+          if (placesList) placesList.innerHTML= "";
+          $("#select").val("");
+        }
+        /*function deleteMarkers1() {
+          clearMarkers2();
+          markers1= [];
+        }*/
+        </script>
+    </head>
+    <body>
+        <select id="select">
+            <option selected="selected" value="">
+                ---<請選擇>---
+            </option>
+            <option data-id="school">
+                學校
+            </option>
+            <option data-id="restaurant">
+                餐廳
+            </option>
+            <option data-id="food">
+                食物
+            </option>
+            <option data-id="cafe">
+                咖啡廳
+            </option>
+            <option data-id="gym">
+                健身房
+            </option>
+            <option data-id="church">
+                教堂
+            </option>
+            <option data-id="bus_station">
+                公車站牌
+            </option>
+            <option data-id="hospital">
+                醫院
+            </option>
+            <option data-id="police">
+                警察局
+            </option>
+            <option data-id="fire_station">
+                消防局
+            </option>
+            <option data-id="post_office">
+                郵局
+            </option>
+            <option data-id="library">
+                圖書館
+            </option>
+            <option data-id="church">
+                博物館
+            </option>
+        </select>
+        <!-- <input onclick="deleteMarkers();" type=button value="Delete Markers"><br> -->
+        <div id="map">
+        </div>
+        <div id="test1">
+        </div>
+        <div id="right-panel">
+            <h2>
+                Results
+            </h2>
+            <ul id="places">
+            </ul>
+<!--             <button id="more">
+                More results
+            </button> -->
+        </div>
+        <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5d01Rs8G6vCblLcohoEUWsLUSFNnIcA&libraries=places&callback=initMap">
+        </script>
+    </body>
+</html>

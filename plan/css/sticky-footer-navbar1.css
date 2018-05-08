@@ -1,0 +1,155 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */\
+  margin-top:50px;
+  margin-bottom: 80px;
+  background-color:transparent;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 50px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.container{
+	
+}
+code {
+  font-size: 80%;
+}
+
+/*-----------*/
+header{
+	padding-top:230px;
+	padding-left:125px;
+	background: url(positivegirl.png) no-repeat;
+   -moz-background-size:100% 100%;        /*for Firefox*/
+	-webkit-background-size:100% 100%;        /*for Google Chrome、Safari*/
+	-o-background-size:100% 100%;        /*for Opera*/
+	background-size:100% 100%;        /*for IE*/
+	height:500px;
+}
+#container{
+	margin-top:10px;
+	padding:0px 20px 20px 20px;
+    border-radius:8px;
+}
+
+#left{
+	float:left;
+	width:270px;
+}
+
+#right{
+	float:right;
+}
+
+#carouselExampleSlidesOnly{
+	border:8px #fff solid;
+}
+/*w*/
+h1{
+	font-size: 48pt;
+    font-weight: bold;
+	font-family:SimSun;
+	color:#fff;
+	text-shadow:2px 2px 2px #555;
+	display:none;
+}
+
+p{
+	line-height:2.2em;
+}
+
+#list{
+	list-style-type: none;
+	margin-top:30px;
+	padding:10px;
+	border-bottom:1px solid #eee;
+	font:14pt SimSun;
+	color:#777;
+}
+
+/*table*/
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+	border:0px solid #999;
+	width:300px;
+	height:280px;
+	padding-right:60px;
+	padding-left:60px;
+}
+#tt{
+	border-radius:99em;
+	background-color:#FFDCB9;
+	width:170px;
+	height:170px;
+}
+#tt1{
+	border-radius:99em;
+	background-color:#FFFFAA;
+	width:170px;
+	height:170px;
+}
+#tt2{
+	border-radius:99em;
+	background-color:#E8FFC4;
+	width:170px;
+	height:170px;
+}
+#borders{
+width:590px;
+	font:11pt Georgia;
+	letter-spacing:1.5px;
+	line-height:2em;
+	margin-left:-70px;
+}
+
+
+#s1{
+	display:inline-block;
+	font:16pt Georgia; 
+	color:#555;
+	padding-left:45px;
+	padding-top:75px;
+	font-weight:bold;
+}
+#s2{
+	display:inline-block;
+	font:16pt Georgia; 
+	color:#555;
+	padding-left:35px;
+	padding-top:75px;
+	font-weight:bold;
+}
+#s3{
+	display:inline-block;
+	font:15pt Georgia; 
+	color:#555;
+	padding-left:15px;
+	padding-top:75px;
+	font-weight:bold;
+}
+#s4{
+	display:inline-block;
+	font:12pt Georgia; 
+	color:#555;
+	padding-left:15px;
+	padding-top:75px;
+	font-weight:bold;
+}

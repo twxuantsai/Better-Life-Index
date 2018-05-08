@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style type="text/css">
+      .demo{width:320px; margin:20px auto 0 auto; }
+      .count{margin-top:50px;font-size:32px; }
+      #number{font-size:42px;text-shadow: 0 -1px 0 #72a441;color:#360;font-weight:700;}
+    </style>
+</head>
+<body>
+    <div id="main">
+      <div class="demo">
+    	   <div class="count">參加人數：<span id="number"></span></div>
+      </div> 
+      <br/>
+    </div>
+    <script>
+        function magic_number(value) {
+          console.log(value);
+        	var num = $("#number");
+            num.animate({count: value}, {
+                duration: 500,  //持續時間
+                step: function() {
+                    num.text(String(parseInt(this.count)));
+        		}
+        	});
+        };
+
+        function update() {
+            $.get("number.php", function(data) {
+            magic_number(data);
+            console.log(data);
+            });
+        };
+
+        setInterval(update, 3000);
+        update();
+    </script>
+    <div id="footer"></div>
+</body>
+</html>

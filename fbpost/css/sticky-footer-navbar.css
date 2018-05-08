@@ -1,0 +1,148 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */\
+  margin-top:50px;
+  margin-bottom: 80px;
+  background-color:transparent;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top:100px;
+  border-top:1px solid #eee;
+  text-align:center;
+  /* Set the fixed height of the footer here */
+  height: 80px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #fff;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 50px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.container{
+	
+}
+code {
+  font-size: 80%;
+}
+
+/*-----------*/
+header{
+	padding-top:230px;
+	padding-left:65px;
+	background: url(word.png) no-repeat;
+   -moz-background-size:100% 100%;        /*for Firefox*/
+	-webkit-background-size:100% 100%;        /*for Google Chrome、Safari*/
+	-o-background-size:100% 100%;        /*for Opera*/
+	background-size:100% 100%;        /*for IE*/
+	height:350px;
+}
+#start{
+	margin-top:60px;
+	height:250px;
+	padding:20px 20px 20px 20px;
+    border-radius:8px;
+	background-color:#f9f9f9;
+}
+
+#startR{
+	text-align:center;
+	height:250px;
+}
+#container{
+	text-align:center;
+	height:480px;
+}
+#rr{
+	margin-top:60px;
+	margin-bottom:60px;
+	border-top:1px dotted #eee;
+	height:300px;
+}
+#carouselExampleSlidesOnly{
+	border:8px #fff solid;
+}
+/*w*/
+h1{
+	font-size: 48pt;
+    font-weight: bold;
+	font-family:SimSun;
+	color:#fff;
+	text-shadow:2px 2px 2px #555;
+	display:none;
+}
+
+p{
+	line-height:2.2em;
+}
+
+#join{
+	margin-top:30px;
+}
+#step{
+	font:20pt SimSun;
+	padding:15px;
+	color:#555;
+	font-weight:bold;
+}
+
+#step1{
+	font:15pt arial;
+	padding:15px;
+	color:#555;
+	padding-bottom:30px;
+	border-bottom:1px solid #eee;
+	font-weight:bold;
+}
+
+#step2{
+	font:20pt SimSun;
+	padding:30px;
+	color:#555;
+	font-weight:bold;
+}
+
+#myresult{
+	font:45pt arial;
+	padding:20px;
+	color:#222;
+	padding-bottom:30px;
+	font-weight:bold;
+}
+#resulttext{
+	font:18pt arial;
+	padding:15px;
+	color:#999;
+	padding-bottom:30px;
+	font-weight:bold;
+}
+
+#but{
+	margin-bottom:10px;
+	background-color:#4267b2;
+	border-radius:2px;
+	color:#fff;
+}
+
+a:hover{
+	text-decoration:none;
+}
+	
